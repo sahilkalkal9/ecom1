@@ -52,7 +52,7 @@ export default function Signup() {
             const result = await signInWithPhoneNumber(auth, `+91${userData.phone}`, appVerifier);
             setConfirmationResult(result);
             setOtpSent(true);
-            alert("OTP sent to your phone!");
+            alert("OTP sent to your phone!"); 
         } catch (error) {
             console.log(error);
             alert("Failed to send OTP: " + error.message);
@@ -66,6 +66,7 @@ export default function Signup() {
                 const result = await confirmationResult.confirm(userData.otp);
                 alert("Phone number verified successfully!");
                 setIsVerified(true);
+                
                 console.log("User verified:", result.user);
             } catch (err) {
                 console.log(err);
