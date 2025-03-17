@@ -1,5 +1,6 @@
 {
   "name": "maccoecom1",
+  "homepage": "https://ecom1-delta.vercel.app/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
