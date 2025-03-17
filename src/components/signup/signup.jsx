@@ -36,7 +36,7 @@ export default function Signup() {
                     callback: (response) => {
                         console.log("reCAPTCHA resolved");
                     },
-                    'expired-callback': () => {
+                    expiredCallback: () => { // ✅ fixed here
                         console.warn("reCAPTCHA expired, generating new one...");
                         recaptchaVerifier.current.clear();
                         recaptchaVerifier.current = null;
@@ -47,6 +47,7 @@ export default function Signup() {
             recaptchaVerifier.current.render();
         }
     }, []);
+
 
     const handleSendOtp = async (e) => {
         e.preventDefault();
