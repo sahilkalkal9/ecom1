@@ -48,7 +48,7 @@ export default function Signup() {
         }
 
         try {
-            const appVerifier = recaptchaVerifier.current;
+            const appVerifier = window.recaptchaVerifier;
             const result = await signInWithPhoneNumber(auth, `+91${userData.phone}`, appVerifier);
             setConfirmationResult(result);
             setOtpSent(true);
