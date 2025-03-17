@@ -26,26 +26,17 @@ export default function Signup() {
         setUserData((prev) => ({ ...prev, [name]: value }));
     };
 
-    // ✅ Setup RecaptchaVerifier once
     useEffect(() => {
-        if (!recaptchaVerifier.current) {
-            recaptchaVerifier.current = new RecaptchaVerifier(
-                "recaptcha-container",
-                {
-                    size: "invisible",
-                    callback: (response) => {
-                        console.log("reCAPTCHA resolved");
-                    },
-                    expiredCallback: () => { // ✅ fixed here
-                        console.warn("reCAPTCHA expired, generating new one...");
-                        recaptchaVerifier.current.clear();
-                        recaptchaVerifier.current = null;
-                    }
-                },
-                auth
-            );
-            recaptchaVerifier.current.render();
+        window.recaptchaVerifier = new RecaptchaVerifier(
+            auth, "recaptcha-container", {
+            size: "invisible",
+            callback: function (response) {
+                console.log("Captcha Resolved");
+            },
+
+            defaultCountry: "IN",
         }
+        );
     }, []);
 
 
